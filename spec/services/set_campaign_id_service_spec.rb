@@ -1,10 +1,17 @@
 require 'rails_helper'
 include Constants
 
+# stub_request from Webmock is used to mock API responses.
+# We are testing various APIs of Iterator which requires mocking the response.
 RSpec.describe SetCampaignIdService, type: :request do
   let(:user) { FactoryBot.create(:users) }
   let(:service) { described_class.new({user_id: user.id}) }
+
+  before do
+    allow_any_instance_of(User).to receive(:save_user_in_iterator).and_return(true)
+  end
   
+  # Testing create_template method only
   context "#create_template" do
     let(:body) { {
       "clientTemplateId": user.id.to_s,
@@ -42,6 +49,7 @@ RSpec.describe SetCampaignIdService, type: :request do
     end
   end
 
+  # Testing get_template_id method only
   context "#get_template_id" do
     it "should return 200 response for valid API key" do
       resp = {
@@ -72,6 +80,7 @@ RSpec.describe SetCampaignIdService, type: :request do
     end
   end
 
+  # Testing create_campaign method only
   context "#create_campaign" do
     let(:template_id) { Faker::Number.number }
     let(:campaign_id) { Faker::Number.number }
@@ -106,6 +115,7 @@ RSpec.describe SetCampaignIdService, type: :request do
     end
   end
 
+  # Testing all 3 above APIs using stubs
   context "#call" do
     let(:template_id) { Faker::Number.number }
     let(:campaign_id) { Faker::Number.number }

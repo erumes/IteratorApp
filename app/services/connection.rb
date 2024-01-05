@@ -1,3 +1,4 @@
+# Connection module to have a common connection method for all request types
 module Connection
   include Constants
 

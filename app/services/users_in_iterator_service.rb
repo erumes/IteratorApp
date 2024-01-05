@@ -1,3 +1,4 @@
+# This class implements functionality to save Users in Iterator. In case of Exceptions, method call will return 500
 class UsersInIteratorService
   include Constants, Connection
   attr_accessor :user_id, :user_email

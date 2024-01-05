@@ -1,3 +1,4 @@
+# Constants module to store all constants to be used in services
 module Constants
   ITERABLE_URL = "https://api.iterable.com".freeze
   ITERABLE_EVENTS_URL = "/api/events/track".freeze

@@ -1,24 +1,23 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This README documents whatever steps are necessary to get the application up and running.
 
-Things you may want to cover:
+* Install Ruby version - 3.0.0
+* This app uses Rails version - 7.1.2
 
-* Ruby version
+* Database initialization - After cloning the repo, run the folowing:
+  `rails db:create db:migrate`
 
-* System dependencies
+* Run `bundle install`
 
-* Configuration
+* Start rails server using `rails s`. The server will start on `localhost:3000`
 
-* Database creation
+* Sign Up with details mentioned in the form.
 
-* Database initialization
+  * Two buttons will be available on screen, each for event A and event B. The functionality should allow Events to be created in Iterable, however without API-key, it won't work.
 
-* How to run the test suite
+  * Logout button is also available on screen.
+____________________________________________________________________________________________
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* If you do not want to do app setup, and only test functionality, then you can run the test suite.
+  * Run the test suite using `rspec spec`

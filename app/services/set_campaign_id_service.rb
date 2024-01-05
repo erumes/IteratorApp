@@ -1,3 +1,6 @@
+# This class implements functionality to create a campaign in Iterator.
+# campaign creation will return a campaign id which is required in Email trigger API
+# In case of Exceptions, method call will return 500
 class SetCampaignIdService
   include Constants, Connection
   attr_accessor :user_id, :user
@@ -27,6 +30,7 @@ class SetCampaignIdService
 
   private
 
+  # Step 1 - Create an Email Template
   def create_template
     body = {
       "clientTemplateId": user_id.to_s,
@@ -43,6 +47,9 @@ class SetCampaignIdService
     500
   end
 
+  # Step 2 - Get the Template Id of previously created template.
+  # Using clientTemplateId it will return all templates.
+  # In this case it will return a collection of 1 template, so we select the first one on line 18
   def get_template_id
     url = ITERABLE_URL + ITERABLE_TEMPLATE_GET_URL + "?clientTemplateId=" + user_id.to_s
     response = connection(:get, url)
@@ -52,6 +59,9 @@ class SetCampaignIdService
     [500, {}]
   end
 
+  # Step 3 - Use the template id retrieved in previous step for creating campaign.
+  # This API will return Campaign id in response body.
+  # We will then return the campaign id to be stored in the user's session
   def create_campaign(template_id)
     body = {
       "name": "Event B Campaign",

@@ -1,3 +1,4 @@
+# This class implements functionality to send Email using Iterator API. In case of Exceptions, method call will return 500
 class SendEmailService
   include Constants, Connection
   attr_accessor :user_email, :campaign_id

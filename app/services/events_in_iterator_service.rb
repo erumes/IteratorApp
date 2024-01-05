@@ -1,3 +1,4 @@
+# This class implements functionality to save Events in Iterator. In case of Exceptions, method call will return 500
 class EventsInIteratorService
   include Constants, Connection
   attr_accessor :user_email, :event_type
