@@ -1,0 +1,5 @@
+<%= render template: "layouts/logout" %>
+<div style="margin: 10em 30em; display: flex; align-items: center; justify-content: space-evenly;">
+  <%= button_to "Create Event A", events_path(event_type: "A"), method: :post, style: "padding: 20px; background: lightblue; cursor: pointer;" %>
+  <%= button_to "Create Event B", events_path(event_type: "B"), method: :post, style: "padding: 20px; background: lightblue; cursor: pointer;" %>
+</div>
